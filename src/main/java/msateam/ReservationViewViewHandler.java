@@ -38,31 +38,8 @@ public class ReservationViewViewHandler {
         }
     }
 
-
     @StreamListener(KafkaProcessor.INPUT)
-    public void when_then_UPDATE_(@Payload  ) {
-        try {
-            if (!.validate()) return;
-                // view 객체 조회
-            Optional<ReservationView> reservationViewOptional = reservationViewRepository.findById(.getRoomId());
-
-            if( reservationViewOptional.isPresent()) {
-                 ReservationView reservationView = reservationViewOptional.get();
-            // view 객체에 이벤트의 eventDirectValue 를 set 함
-                 reservationView.setDesc(.getDesc());
-                 reservationView.setReviewCnt(.getReviewCnt());
-                 reservationView.setRoomStatus(.getStatus());
-                // view 레파지 토리에 save
-                 reservationViewRepository.save(reservationView);
-                }
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    @StreamListener(KafkaProcessor.INPUT)
-    public void whenReservationConfirmed_then_UPDATE_2(@Payload ReservationConfirmed reservationConfirmed) {
+    public void whenReservationConfirmed_then_UPDATE_1(@Payload ReservationConfirmed reservationConfirmed) {
         try {
             if (!reservationConfirmed.validate()) return;
                 // view 객체 조회
@@ -83,7 +60,7 @@ public class ReservationViewViewHandler {
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenPaymentApproved_then_UPDATE_3(@Payload PaymentApproved paymentApproved) {
+    public void whenPaymentApproved_then_UPDATE_2(@Payload PaymentApproved paymentApproved) {
         try {
             if (!paymentApproved.validate()) return;
                 // view 객체 조회
@@ -102,7 +79,7 @@ public class ReservationViewViewHandler {
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenReservationCancelled_then_UPDATE_4(@Payload ReservationCancelled reservationCancelled) {
+    public void whenReservationCancelled_then_UPDATE_3(@Payload ReservationCancelled reservationCancelled) {
         try {
             if (!reservationCancelled.validate()) return;
                 // view 객체 조회
@@ -120,7 +97,7 @@ public class ReservationViewViewHandler {
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenPaymentCancelled_then_UPDATE_5(@Payload PaymentCancelled paymentCancelled) {
+    public void whenPaymentCancelled_then_UPDATE_4(@Payload PaymentCancelled paymentCancelled) {
         try {
             if (!paymentCancelled.validate()) return;
                 // view 객체 조회
